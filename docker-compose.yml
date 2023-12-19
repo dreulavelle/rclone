@@ -1,0 +1,22 @@
+version: '3'
+services:
+  test:
+    container_name: test
+    image: test:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      PUID: "999"
+      PGID: "999"
+      RCLONE_USERNAME: Spoked
+      RCLONE_PASSWORD: KPB2MXGQGNPY2
+    privileged: true
+    cap_add:
+      - SYS_ADMIN
+    security_opt:
+      - apparmor:unconfined
+    devices:
+      - /dev/fuse
+    volumes:
+      - C:\\:/mnt
